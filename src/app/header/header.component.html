@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm bg-light">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand">Recipe Book</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <!-- <li class="nav-item"><a href="#" (click)="onSelect('recipe')" class="nav-link">Recipes</a></li>
+                <li class="nav-item"><a href="#" (click)="onSelect('Shopping-list')" class="nav-link">Shopping List</a></li> -->
+                <li class="nav-item" routerLinkActive="active"><a routerLink="/recipes" class="nav-link" *ngIf="isAuthenticated">Recipes</a></li>
+                <li class="nav-item" routerLinkActive="active"><a routerLink="/shopping-list" class="nav-link">Shopping List</a></li>
+                <li class="nav-item" routerLinkActive="active"><a routerLink="/auth" class="nav-link" *ngIf="!isAuthenticated">Login/Register</a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li *ngIf="isAuthenticated">
+                    <a style="cursor: pointer;" class="me-4" (click)="onLogout()">Logout</a>
+                </li>
+                <li class="dropdown" *ngIf="isAuthenticated">
+                    <a style="cursor: pointer;" class="dropdown-toggle me-4" data-bs-toggle="dropdown" role="button">Manage<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
